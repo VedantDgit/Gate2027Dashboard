@@ -29,15 +29,17 @@ export const metadata: Metadata = {
   authors: [{ name: 'GATE 2027 Aspirant' }],
 };
 
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark`}>
-      <body className="min-h-screen bg-[#090c10] text-[#f0f6fc] antialiased selection:bg-sky-500/30">
-        {children}
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <body className="min-h-screen antialiased selection:bg-sky-500/30">
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
